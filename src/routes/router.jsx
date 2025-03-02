@@ -4,6 +4,7 @@ import AuthLayout from "../layouts/AuthLayout";
 import SignIn from "../components/SignIn";
 import SignUp from "../components/SignUp";
 import HomeLayout from "../layouts/HomeLayout";
+import GameDetails from "../components/GameDetails";
 
 const router = createBrowserRouter([
     {
@@ -30,6 +31,11 @@ const router = createBrowserRouter([
             {
                 path: "gameWatchList",
                 element: "This is Game WatchList",
+            },
+            {
+                path: "popularGames/:id",
+                element: <GameDetails></GameDetails>,
+                loader: ({ params }) => fetch(`http://localhost:5000/popularGames/${params.id}`)
             },
             {
                 path: "authLayout",
