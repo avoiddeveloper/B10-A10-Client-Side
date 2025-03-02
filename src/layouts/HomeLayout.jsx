@@ -1,13 +1,10 @@
-import React from 'react';
-import { Outlet } from 'react-router-dom';
-import Navbar from '../components/Navbar';
+import Hero from "../components/Hero";
 
 const HomeLayout = () => {
     return (
-        <div className='f-inter'>
-            <Navbar></Navbar>
-            <Outlet></Outlet>
-        </div>
+        <section>
+            <Hero></Hero>
+        </section>
     );
 };
 
