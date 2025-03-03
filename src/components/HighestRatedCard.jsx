@@ -9,7 +9,7 @@ const HighestRatedCard = (prop = {}) => {
                 <img
                     src={photoUrl}
                     alt={title}
-                    className="w-full h-[150px] object-cover" />
+                    className="w-full md:h-[250px] lg:h-[350px] object-cover" />
             </figure>
             <div className="card-body">
                 <h2 className="card-title">{title}</h2>
