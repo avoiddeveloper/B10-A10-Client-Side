@@ -20,7 +20,7 @@ const ReviewDetails = () => {
                     <p>Rating: {review?.rating}</p>
                     <p>Game Type: {review?.genres}</p>
                     <div className="card-actions justify-end">
-                        <Link to="/reviews" className="btn btn-primary">Back</Link>
+                        <Link to="/all-reviews" className="btn btn-primary">Back</Link>
                     </div>
                 </div>
             </div>

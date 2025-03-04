@@ -7,6 +7,7 @@ import GameDetails from "../components/GameDetails";
 import Auth from "../layouts/Auth";
 import AddReviews from "../components/AddReviews";
 import ReviewDetails from "../components/ReviewDetails";
+import AllReviews from "../components/AllReviews";
 
 const router = createBrowserRouter([
     {
@@ -23,8 +24,8 @@ const router = createBrowserRouter([
                 element: <HomeLayout></HomeLayout>
             },
             {
-                path: "reviews",
-                element: <AddReviews></AddReviews>,
+                path: "all-reviews",
+                element: <AllReviews></AllReviews>,
                 loader: () => fetch('http://localhost:5000/review')
             },
             {
@@ -33,7 +34,11 @@ const router = createBrowserRouter([
                 loader: ({ params }) => fetch(`http://localhost:5000/review/${params.id}`)
             },
             {
-                path: "myReviews",
+                path: "add-reviews",
+                element: <AddReviews></AddReviews>,
+            },
+            {
+                path: "my-reviews",
                 element: "This Is My Reviews",
             },
             {
