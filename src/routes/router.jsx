@@ -1,10 +1,10 @@
 import { createBrowserRouter, Navigate } from "react-router-dom";
 import Root from "../layouts/Root";
-import AuthLayout from "../layouts/AuthLayout";
 import SignIn from "../components/SignIn";
 import SignUp from "../components/SignUp";
 import HomeLayout from "../layouts/HomeLayout";
 import GameDetails from "../components/GameDetails";
+import Auth from "../layouts/Auth";
 
 const router = createBrowserRouter([
     {
@@ -17,7 +17,7 @@ const router = createBrowserRouter([
                 element: <Navigate to={'/home'}></Navigate>
             },
             {
-                path: "home",
+                path: "/home",
                 element: <HomeLayout></HomeLayout>
             },
             {
@@ -38,19 +38,20 @@ const router = createBrowserRouter([
                 loader: ({ params }) => fetch(`http://localhost:5000/popularGames/${params.id}`)
             },
             {
-                path: "authLayout",
-                element: <AuthLayout></AuthLayout>,
+                path: "auth",
+                element: <Auth></Auth>,
                 children: [
                     {
-                        path: "signIn",
-                        element: <SignIn></SignIn>,
+                        path: "sign-in",
+                        element: <SignIn></SignIn>
                     },
                     {
-                        path: "signUp",
-                        element: <SignUp></SignUp>,
-                    },
+                        path: "sign-up",
+                        element: <SignUp></SignUp>
+                    }
                 ]
             }
+
         ]
     },
 ])

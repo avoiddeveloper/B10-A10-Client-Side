@@ -25,7 +25,7 @@ const GameDetails = () => {
                         <p>Year of Manufacturing: {madeInYear}</p>
                     </div>
                     <div>
-                        <Link to="home" className="btn">Back To Home</Link>
+                        <Link to="/home" className="btn">Back To Home</Link>
                     </div>
                 </div>
             </div>
