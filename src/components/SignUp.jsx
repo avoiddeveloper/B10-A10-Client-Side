@@ -1,6 +1,12 @@
+import { useContext } from 'react';
 import { Link } from 'react-router-dom';
+import { AuthContext } from '../provider/AuthProvider';
+import { updateProfile } from 'firebase/auth';
 const SignUp = () => {
 
+    const { createUser, setUser, user } = useContext(AuthContext)
+
+    console.log(user)
     const handleForm = async (event) => {
         event.preventDefault();
         const form = new FormData(event.target);
@@ -9,6 +15,23 @@ const SignUp = () => {
         const name = form.get("name");
         const pass = form.get("pass");
         console.log({ name, photo, email, pass })
+        createUser(email, pass)
+        .then((userCredential) => {
+            const user = userCredential.user;
+            updateProfile(user, {
+                displayName: name,
+                photoURL: photo,
+            }).then(() => {
+                setUser(user);
+                // navigate(location?.state ? location.state : "/");
+            }).catch((error) => {
+                alert("Error updating user profile:", error);
+            });
+        })
+        .catch((error) => {
+            const errorCode = error.code;
+            console.log(errorCode)
+        });
     };
 
     return (
