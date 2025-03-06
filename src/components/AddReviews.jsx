@@ -98,7 +98,7 @@ const AddReviews = () => {
                                 <div className="md:flex justify-between gap-3">
                                     <div className="w-full">
                                         <label className="fieldset-label">Email</label>
-                                        <input readOnly type="email" name="email" className="input w-full" defaultValue={user.email} placeholder="Email" />
+                                        <input readOnly type="email" name="email" className="input w-full" defaultValue={user?.email} placeholder="Email" />
                                     </div>
                                     <div className="w-full">
                                         <label className="fieldset-label">Name</label>

@@ -51,6 +51,7 @@ const UpdateReview = () => {
         fetch(`http://localhost:5000/review/${id}`)
             .then(res => res.json())
             .then(data => setReview(data))
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
 
     return (
