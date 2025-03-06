@@ -5,7 +5,6 @@ const MyReviewsCard = (prop = {}) => {
     const { review } = prop || {}
 
     const handleDelete = (id) => {
-        // console.log(id)
         fetch(`http://localhost:5000/deleteReview/${id}`, {
             method: "DELETE",
         })

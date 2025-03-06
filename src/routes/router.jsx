@@ -66,7 +66,6 @@ const router = createBrowserRouter([
                         <WatchList></WatchList>
                     </PrivateRoute>
                 ),
-                loader: () => fetch('http://localhost:5000/list')
             },
             {
                 path: "popularGames/:id",
