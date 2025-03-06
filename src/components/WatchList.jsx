@@ -10,7 +10,7 @@ const WatchList = () => {
 
 
     useEffect(() => {
-        fetch('http://localhost:5000/review')
+        fetch('https://chill-gamer-server-side-nine.vercel.app/review')
             .then(res => res.json())
             .then(data => setReviews(data))
     }, []);

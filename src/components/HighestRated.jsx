@@ -6,7 +6,7 @@ const HighestRated = () => {
     const [games, setGames] = useState([])
 
     useEffect(() => {
-        fetch('http://localhost:5000/popularGames')
+        fetch('https://chill-gamer-server-side-nine.vercel.app/popularGames')
             .then(res => res.json())
             .then(data => setGames(data))
     }, [])

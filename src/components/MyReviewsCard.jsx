@@ -5,7 +5,7 @@ const MyReviewsCard = (prop = {}) => {
     const { review } = prop || {}
 
     const handleDelete = (id) => {
-        fetch(`http://localhost:5000/deleteReview/${id}`, {
+        fetch(`https://chill-gamer-server-side-nine.vercel.app/deleteReview/${id}`, {
             method: "DELETE",
         })
             .then(res => res.json())

@@ -40,7 +40,7 @@ const SignUp = () => {
                     photoURL: photo,
                 }).then(() => {
                     setUser(user);
-                    fetch('http://localhost:5000/user', {
+                    fetch('https://chill-gamer-server-side-nine.vercel.app/user', {
                         method: "POST",
                         headers: {
                             'content-type': 'application/json'

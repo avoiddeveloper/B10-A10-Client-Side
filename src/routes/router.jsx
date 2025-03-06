@@ -31,12 +31,12 @@ const router = createBrowserRouter([
             {
                 path: "all-reviews",
                 element: <AllReviews></AllReviews>,
-                loader: () => fetch('http://localhost:5000/review')
+                loader: () => fetch('https://chill-gamer-server-side-nine.vercel.app/review')
             },
             {
                 path: "review/:id",
                 element: <ReviewDetails></ReviewDetails>,
-                loader: ({ params }) => fetch(`http://localhost:5000/review/${params.id}`)
+                loader: ({ params }) => fetch(`https://chill-gamer-server-side-nine.vercel.app/review/${params.id}`)
             },
             {
                 path: "add-reviews",
@@ -53,7 +53,7 @@ const router = createBrowserRouter([
                         <MyReviews></MyReviews>
                     </PrivateRoute>
                 ),
-                loader: () => fetch('http://localhost:5000/review')
+                loader: () => fetch('https://chill-gamer-server-side-nine.vercel.app/review')
             },
             {
                 path: "/updateReview/:id",
@@ -70,7 +70,7 @@ const router = createBrowserRouter([
             {
                 path: "popularGames/:id",
                 element: <GameDetails></GameDetails>,
-                loader: ({ params }) => fetch(`http://localhost:5000/popularGames/${params.id}`)
+                loader: ({ params }) => fetch(`https://chill-gamer-server-side-nine.vercel.app/popularGames/${params.id}`)
             },
             {
                 path: "auth",

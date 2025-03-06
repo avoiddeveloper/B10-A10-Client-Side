@@ -13,7 +13,7 @@ const AllReviews = () => {
         const userName = user.displayName;
         const wlItem = { id, userName }
         if (user) {
-            fetch('http://localhost:5000/watchList', {
+            fetch('https://chill-gamer-server-side-nine.vercel.app/watchList', {
                 method: "POST",
                 headers: {
                     "content-type": "application/json"

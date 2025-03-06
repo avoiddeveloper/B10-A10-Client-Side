@@ -19,7 +19,7 @@ const UpdateReview = () => {
         const name = form.get('name');
         const user = { thumbnailURL, gameTitle, reviewDescription, publishDate, rating, genres, email, name };
 
-        fetch(`http://localhost:5000/updateReview/${id}`, {
+        fetch(`https://chill-gamer-server-side-nine.vercel.app/updateReview/${id}`, {
             method: "PATCH",
             headers: {
                 "Content-Type": "application/json"
@@ -48,7 +48,7 @@ const UpdateReview = () => {
 
 
     useEffect(() => {
-        fetch(`http://localhost:5000/review/${id}`)
+        fetch(`https://chill-gamer-server-side-nine.vercel.app/review/${id}`)
             .then(res => res.json())
             .then(data => setReview(data))
     // eslint-disable-next-line react-hooks/exhaustive-deps
