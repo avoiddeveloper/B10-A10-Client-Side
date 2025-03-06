@@ -10,12 +10,13 @@ import ReviewDetails from "../components/ReviewDetails";
 import AllReviews from "../components/AllReviews";
 import MyReviews from "../components/MyReviews";
 import UpdateReview from "../components/UpdateReview";
+import Error from "../components/Error";
 
 const router = createBrowserRouter([
     {
         path: "/",
         element: <Root></Root>,
-        errorElement: "Page Not Found 404!",
+        errorElement: <Error></Error>,
         children: [
             {
                 path: "",

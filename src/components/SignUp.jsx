@@ -22,11 +22,23 @@ const SignUp = () => {
                     photoURL: photo,
                 }).then(() => {
                     setUser(user);
-                    Swal.fire({
-                        title: "Sign Up Successful!",
-                        text: `Welcome ${user.displayName}`,
-                        icon: "success"
-                    });
+                    fetch('http://localhost:5000/user', {
+                        method: "POST",
+                        headers: {
+                            'content-type': 'application/json'
+                        },
+                        body: JSON.stringify(user)
+                    })
+                        .then(res => res.json())
+                        .then(data => {
+                            if (data.insertedId) {
+                                Swal.fire({
+                                    title: "Sign Up Successful!",
+                                    icon: "success"
+                                });
+                            }
+                        })
+
                 }).catch((error) => {
                     alert("Error updating user profile:", error);
                 });
@@ -54,16 +66,16 @@ const SignUp = () => {
                         <div className="card-body text-center">
                             <form onSubmit={handleForm} className="fieldset">
                                 <label className="fieldset-label">Name</label>
-                                <input type="text" name='name' className="input w-full" placeholder="Enter Your Name" />
+                                <input type="text" name='name' className="input w-full" placeholder="Enter Your Name" required />
 
                                 <label className="fieldset-label">Email</label>
-                                <input type="email" name='email' className="input w-full" placeholder="Enter Your Email" />
+                                <input type="email" name='email' className="input w-full" placeholder="Enter Your Email" required />
 
                                 <label className="fieldset-label">Photo URL</label>
-                                <input type="text" name='photo' className="input w-full" placeholder="Enter Your Photo URL" />
+                                <input type="text" name='photo' className="input w-full" placeholder="Enter Your Photo URL" required />
 
                                 <label className="fieldset-label">Password</label>
-                                <input type="password" name='pass' className="input w-full" placeholder="Password" />
+                                <input type="password" name='pass' className="input w-full" placeholder="Password" required />
 
                                 <input type="submit" value="Sign Up" className="btn bg-purple-300 mt-4" />
                             </form>
