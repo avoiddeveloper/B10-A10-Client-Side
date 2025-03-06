@@ -14,9 +14,27 @@ const SignUp = () => {
         const photo = form.get("photo");
         const name = form.get("name");
         const pass = form.get("pass");
+
+
+        if (!/[A-Z]/.test(pass)) {
+            return alert("Must have an Uppercase letter in the password")
+        }
+
+        if (!/[a-z]/.test(pass)) {
+            return alert("Must have a Lowercase letter in the password")
+        }
+
+        if (pass.length < 6) {
+            return alert("Length must be at least 6 character")
+        }
+
         createUser(email, pass)
             .then((userCredential) => {
                 const user = userCredential.user;
+                const userName = user.displayName;
+                const userEmail = user.email;
+                const userDB = { userName, userEmail }
+
                 updateProfile(user, {
                     displayName: name,
                     photoURL: photo,
@@ -27,7 +45,7 @@ const SignUp = () => {
                         headers: {
                             'content-type': 'application/json'
                         },
-                        body: JSON.stringify(user)
+                        body: JSON.stringify(userDB)
                     })
                         .then(res => res.json())
                         .then(data => {

@@ -52,7 +52,7 @@ const Navbar = () => {
                                         className="w-full h-full rounded-full object-cover"
                                     />
                                 </div>
-                                <button onClick={() => logOut()} className="btn">Logout</button>
+                                <Link to={'/home'} onClick={() => logOut()} className="btn">Logout</Link>
                             </div>
                         ) : (
                             <Link to="auth/sign-in" className="btn">Sign In</Link>

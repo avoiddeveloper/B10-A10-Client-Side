@@ -11,6 +11,8 @@ import AllReviews from "../components/AllReviews";
 import MyReviews from "../components/MyReviews";
 import UpdateReview from "../components/UpdateReview";
 import Error from "../components/Error";
+import PrivateRoute from "./PrivateRoute";
+import WatchList from "../components/WatchList";
 
 const router = createBrowserRouter([
     {
@@ -38,11 +40,19 @@ const router = createBrowserRouter([
             },
             {
                 path: "add-reviews",
-                element: <AddReviews></AddReviews>,
+                element: (
+                    <PrivateRoute>
+                        <AddReviews></AddReviews>
+                    </PrivateRoute>
+                ),
             },
             {
                 path: "my-reviews",
-                element: <MyReviews></MyReviews>,
+                element: (
+                    <PrivateRoute>
+                        <MyReviews></MyReviews>
+                    </PrivateRoute>
+                ),
                 loader: () => fetch('http://localhost:5000/review')
             },
             {
@@ -51,7 +61,12 @@ const router = createBrowserRouter([
             },
             {
                 path: "gameWatchList",
-                element: "This is Game WatchList",
+                element: (
+                    <PrivateRoute>
+                        <WatchList></WatchList>
+                    </PrivateRoute>
+                ),
+                loader: () => fetch('http://localhost:5000/list')
             },
             {
                 path: "popularGames/:id",
