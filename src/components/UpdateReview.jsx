@@ -1,9 +1,10 @@
+import { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import Swal from "sweetalert2";
 
 const UpdateReview = () => {
     const { id } = useParams();
-    // console.log(id)
+    const [review, setReview] = useState([])
 
     const handleFormSubmit = (event) => {
         event.preventDefault();
@@ -27,6 +28,7 @@ const UpdateReview = () => {
         })
             .then(res => res.json())
             .then(data => {
+                // setReview(data)
                 if (data.modifiedCount > 0) {
                     Swal.fire({
                         title: "Review Updated",
@@ -44,6 +46,13 @@ const UpdateReview = () => {
 
     }
 
+
+    useEffect(() => {
+        fetch(`http://localhost:5000/review/${id}`)
+            .then(res => res.json())
+            .then(data => setReview(data))
+    }, [])
+
     return (
         <section className="w-11/12 mx-auto flex flex-col justify-center py-5">
             <div className="md:w-[70%] mx-auto bg-purple-200 rounded-xl space-y-5 p-5">
@@ -59,22 +68,22 @@ const UpdateReview = () => {
                                 <div className="md:flex justify-between gap-3">
                                     <div className="w-full">
                                         <label className="fieldset-label">Thumbnail URL</label>
-                                        <input type="text" name="thumb" className="input w-full" placeholder="Thumbnail" required />
+                                        <input type="text" name="thumb" className="input w-full" defaultValue={review?.thumbnailURL} placeholder="Thumbnail" required />
                                     </div>
                                     <div className="w-full">
                                         <label className="fieldset-label">Game Title</label>
-                                        <input type="text" name="title" className="input w-full" placeholder="Game Title" required />
+                                        <input type="text" name="title" className="input w-full" defaultValue={review?.gameTitle} placeholder="Game Title" required />
                                     </div>
                                 </div>
 
                                 <div className="md:flex justify-between gap-3">
                                     <div className="w-full">
                                         <label className="fieldset-label">Review Description</label>
-                                        <textarea type="text" name="review_description" className="input w-full" placeholder="Description" required />
+                                        <textarea type="text" name="review_description" className="input w-full" defaultValue={review?.reviewDescription} placeholder="Description" required />
                                     </div>
                                     <div className="w-full">
                                         <label className="fieldset-label">Publishing year</label>
-                                        <input type="number" name="publish_date" className="input w-full" placeholder="Publishing year" required />
+                                        <input type="number" name="publish_date" className="input w-full" defaultValue={review.publishDate} placeholder="Publishing year" required />
                                     </div>
                                 </div>
 
@@ -82,11 +91,11 @@ const UpdateReview = () => {
                                 <div className="md:flex justify-between gap-3">
                                     <div className="w-full">
                                         <label className="fieldset-label">Rating(e.g.,1-10)</label>
-                                        <input type="number" name="rating" className="input w-full" placeholder="Rate it" required />
+                                        <input type="number" name="rating" className="input w-full" defaultValue={review.rating} placeholder="Rate it" required />
                                     </div>
                                     <div className="w-full">
                                         <label className="fieldset-label">Genres</label>
-                                        <select className="input w-full" id="genres" name="genres" >
+                                        <select defaultValue={review?.genres} className="input w-full" id="genres" name="genres" >
                                             <option>Options</option>
                                             <option value="action">Action</option>
                                             <option value="rpg">RPG</option>
@@ -98,11 +107,11 @@ const UpdateReview = () => {
                                 <div className="md:flex justify-between gap-3">
                                     <div className="w-full">
                                         <label className="fieldset-label">Email</label>
-                                        <input readOnly type="email" name="email" className="input w-full" defaultValue={"user@gmail.com"} placeholder="Email" />
+                                        <input readOnly type="email" name="email" className="input w-full" defaultValue={review?.email} placeholder="Email" />
                                     </div>
                                     <div className="w-full">
                                         <label className="fieldset-label">Name</label>
-                                        <input readOnly type="text" name="name" className="input w-full" defaultValue={"Admin"} placeholder="Password" />
+                                        <input readOnly type="text" name="name" className="input w-full" defaultValue={review?.name} placeholder="Password" />
                                     </div>
                                 </div>
                                 <input type="submit" value="Add Review" className="btn bg-purple-300 mt-4" />

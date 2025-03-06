@@ -1,7 +1,11 @@
+import { useContext } from "react";
 import { Link } from "react-router-dom";
 import Swal from 'sweetalert2'
+import { AuthContext } from "../provider/AuthProvider";
 
 const AddReviews = () => {
+
+    const {user} = useContext(AuthContext)
 
 
     const handleFormSubmit = (event) => {
@@ -94,11 +98,11 @@ const AddReviews = () => {
                                 <div className="md:flex justify-between gap-3">
                                     <div className="w-full">
                                         <label className="fieldset-label">Email</label>
-                                        <input readOnly type="email" name="email" className="input w-full" defaultValue={"user@gmail.com"} placeholder="Email" />
+                                        <input readOnly type="email" name="email" className="input w-full" defaultValue={user.email} placeholder="Email" />
                                     </div>
                                     <div className="w-full">
                                         <label className="fieldset-label">Name</label>
-                                        <input readOnly type="text" name="name" className="input w-full" defaultValue={"Admin"} placeholder="Password" />
+                                        <input readOnly type="text" name="name" className="input w-full" defaultValue={user?.displayName} placeholder="Password" />
                                     </div>
                                 </div>
                                 <input type="submit" value="Add Review" className="btn bg-purple-300 mt-4" />
